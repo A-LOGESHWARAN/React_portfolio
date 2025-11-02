@@ -27,6 +27,38 @@ html {
   scroll-padding-top: 75px;
 }
 
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.category-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+  background-color: #6c63ff;
+  transform: translateY(-2px);
+}
+
+.category-btn.active {
+  background-color: #6c63ff;
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.6);
+}
+
+.skill-slider {
+  margin-top: 20px;
+}
+
+
 body {
   font-weight: 400;
   overflow-x: hidden;
@@ -106,9 +138,13 @@ nav.navbar .navbar-nav .nav-link.navbar-link {
   opacity: 0.75;
 }
 nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
-nav.navbar .navbar-nav a.nav-link.navbar-link.active {
-    opacity: 1;
+nav.navbar .navbar-nav a.nav-link.navbar-link/assets/img/banner-bg.pngctive {
+    opacity: 90;
 }
+.navbar-link:hover {
+  color: #00bcd4; 
+}
+
 span.navbar-text {
     display: flex;
     align-items: center;
