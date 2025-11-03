@@ -101,11 +101,38 @@ export const Skills = () => {
                     className="owl-carousel owl-theme skill-slider"
                   >
                     {skills.map((skill, index) => (
-                      <div className="item" key={index}>
-                        <img src={skill.img} alt={skill.name} />
-                        <h5>{skill.name}</h5>
-                      </div>
-                    ))}
+  <motion.div
+    className="item"
+    key={index}
+    whileHover={{
+      rotateY: 20,      // slight 3D tilt
+      rotateX: -9,
+      scale: 1.05,      // gentle zoom
+    }}
+    transition={{
+      type: "spring",
+      stiffness: 200,
+      damping: 10,
+    }}
+    style={{
+      perspective: 1000, // enables 3D effect
+    }}
+  >
+    <motion.img
+      src={skill.img}
+      alt={skill.name}
+      style={{
+        borderRadius: "20px",
+        width: "150px",
+        height: "150px",
+        objectFit: "contain",
+        transition: "all 0.3s ease-in-out",
+      }}
+    />
+    <h5>{skill.name}</h5>
+  </motion.div>
+))}
+
                   </Carousel>
                 </motion.div>
               </AnimatePresence>
