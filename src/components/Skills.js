@@ -39,10 +39,10 @@ export const Skills = () => {
       { img: mysql, name: "MySQL" },
       { img: mongodb, name: "MongoDB" },
     ],
-    "UI/UX Design": [
-      { img: meter1, name: "Figma" },
-      { img: meter2, name: "Adobe XD" },
-      { img: meter3, name: "Wireframing" },
+    "Cloud and Other Technologies": [
+      { img: meter1, name: "Microsoft Azure" },
+      { img: meter2, name: "Docker" },
+      { img: meter3, name: "API Integration" },
       { img: meter1, name: "User Research" },
       { img: meter2, name: "Prototyping" },
     ],

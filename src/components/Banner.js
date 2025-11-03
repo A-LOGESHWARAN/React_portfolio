@@ -12,7 +12,7 @@ export const Banner = () => {
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [index, setIndex] = useState(1);
-  const toRotate = [ "FullStackDeveloper", "ML Engineer", "UI/UX Designer" ];
+  const toRotate = [ "FullStackDeveloper", "ML Engineer", "Software Developer" ];
   const period = 2000;
 
   useEffect(() => {
@@ -58,8 +58,8 @@ export const Banner = () => {
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                 <span className="tagline">ARTIFICIAL INTELLIGENCE & MACHINE LEARNING</span>
                 <h1>{`I'm LOGESHWARAN A`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'><span className="wrap">{text}</span></span></h1>
-                  <p>Passionate Full Stack Developer and ML Engineer with a strong foundation in building intelligent, data-driven web applications. Skilled in combining machine learning models with elegant UI/UX designs to create seamless and impactful digital experiences.</p>
-                  <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
+                  <p>Passionate Full Stack Developer and ML Engineer with a strong foundation in building intelligent, data-driven web applications. Skilled in combining machine learning models with elegant UI/UX designs to create seamless and impactful digital experiences.Skilled in deploying and managing scalable applications on AWS, Azure, and GCP using modern DevOps practices. Passionate about building secure, efficient, and serverless cloud solutions for real-world applications.</p>
+                    
               </div>}
             </TrackVisibility>
           </Col>
