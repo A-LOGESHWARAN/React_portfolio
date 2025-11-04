@@ -10,6 +10,11 @@ import node from "../assets/img/nodejs.png";
 import flask from "../assets/img/flask.webp";
 import mongodb from "../assets/img/mongodb.png";
 import mysql from "../assets/img/sql.svg";
+import McA from "../assets/img/McA.svg";
+import DockL from "../assets/img/DockL.png";
+import AWS from "../assets/img/AWS.png";
+import git from "../assets/img/git.png";
+import pytorch from "../assets/img/pytorch.webp";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import colorSharp from "../assets/img/color-sharp.png";
@@ -29,7 +34,7 @@ export const Skills = () => {
       { img: meter1, name: "TensorFlow" },
       { img: meter2, name: "Scikit-learn" },
       { img: meter3, name: "AutoKeras" },
-      { img: meter4, name: "PyTorch" },
+      { img: pytorch, name: "PyTorch" },
       { img: meter5, name: "Hugging Face" },
     ],
     "Full Stack": [
@@ -40,11 +45,10 @@ export const Skills = () => {
       { img: mongodb, name: "MongoDB" },
     ],
     "Cloud and Other Technologies": [
-      { img: meter1, name: "Microsoft Azure" },
-      { img: meter2, name: "Docker" },
-      { img: meter3, name: "API Integration" },
-      { img: meter1, name: "User Research" },
-      { img: meter2, name: "Prototyping" },
+      { img: McA, name: "Microsoft Azure" },
+      { img: DockL, name: "Docker" },
+      { img: AWS, name: "AWS" },
+      { img: git, name: "Git&Github" },
     ],
   };
 

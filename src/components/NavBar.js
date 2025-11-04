@@ -4,6 +4,9 @@ import logo from '../assets/img/logo.svg';
 import navIcon1 from '../assets/img/nav-icon1.svg';
 import navIcon2 from '../assets/img/nav-icon2.svg';
 import navIcon3 from '../assets/img/nav-icon3.svg';
+import mail from '../assets/img/icons8-gmail-48.png';
+import linkedin from '../assets/img/icons8-linkedin-48.png';
+import github from '../assets/img/icons8-github-logo-100.png';
 import { HashLink } from 'react-router-hash-link';
 import {
   BrowserRouter as Router
@@ -57,9 +60,9 @@ export const NavBar = () => {
             </Nav>
             <span className="navbar-text">
               <div className="social-icon">
-                <a href="https://www.linkedin.com/in/logeshwaran-ashok-022967257/"><img src={navIcon1} alt="" /></a>
-                <a href="#"><img src={navIcon2} alt="" /></a>
-                <a href="#"><img src={navIcon3} alt="" /></a>
+                <a href="https://www.linkedin.com/in/logeshwaran-ashok-022967257/"><img src={linkedin} alt="" /></a>
+                <a href="mailto:waranlogesh0406@gmail.com"><img src={mail} alt="" /></a>
+                <a href="https://github.com/A-LOGESHWARAN"><img src={github} alt="" /></a>
               </div>
               <HashLink to='#connect'>
                 <button className="connect-btn"><span>Let’s Connect</span></button>
