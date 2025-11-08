@@ -1,39 +1,29 @@
 import { Container, Row, Col } from "react-bootstrap";
 import TrackVisibility from "react-on-screen";
 import "animate.css";
- // ✅ We'll use a CSS file for styling
 
 export const Projects = () => {
   const projects = [
     {
       title: "Resume Screener",
       description:
-        "A machine learning-based web app that automates resume screening using NLP and rank candidates efficiently.",
+        "A machine learning-based web app that automates resume screening using NLP and ranks candidates efficiently.",
       github: "https://github.com/A-LOGESHWARAN/Resume_screener",
+      imgUrl: "assets/img/resume-screener.png",
     },
     {
       title: "Pneumonia Detection",
       description:
         "A deep learning model that detects pneumonia from chest X-ray images for faster and accurate diagnosis.",
-      github: "https://github.com/yourusername/smart-city",
+      github: "https://github.com/yourusername/pneumonia-detection",
+      imgUrl: "assets/img/pneumonia.png",
     },
     {
       title: "Personalized Learning Recommender",
       description:
         "An AutoML-based system suggesting learning paths by comparing neural activation functions like ReLU, Sigmoid, and Softmax.",
       github: "https://github.com/yourusername/learning-recommender",
-    },
-    {
-      title: "Personalized Learning Recommender",
-      description:
-        "An AutoML-based system suggesting learning paths by comparing neural activation functions like ReLU, Sigmoid, and Softmax.",
-      github: "https://github.com/yourusername/learning-recommender",
-    },
-    {
-      title: "Personalized Learning Recommender",
-      description:
-        "An AutoML-based system suggesting learning paths by comparing neural activation functions like ReLU, Sigmoid, and Softmax.",
-      github: "https://github.com/yourusername/learning-recommender",
+      imgUrl: "assets/img/learning.png",
     },
   ];
 
@@ -68,6 +58,13 @@ export const Projects = () => {
                           <div className="flip-card-inner">
                             {/* Front */}
                             <div className="flip-card-front">
+                              {project.imgUrl && (
+                                <img
+                                  src={project.imgUrl}
+                                  alt={`${project.title} screenshot`}
+                                  className="project-img"
+                                />
+                              )}
                               <h4>{project.title}</h4>
                             </div>
 
