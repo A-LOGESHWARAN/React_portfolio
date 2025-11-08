@@ -671,77 +671,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   letter-spacing: 0.5px;
   margin-top: 20px;
 }
-.project {
-  background-color: #121212;
-  color: #EAEAEA;
-  padding: 80px 0;
-  position: relative;
-}
 
-.projects-heading {
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-align: center;
-  background: linear-gradient(90deg, #AA00FF, #00C2FF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
-}
-
-.projects-sub {
-  text-align: center;
-  font-size: 1.1rem;
-  color:  rgba(170, 0, 255, 0.6);
-  max-width: 850px;
-  margin: 0 auto 3rem;
-  line-height: 1.6;
-}
-
-.simple-project-card {
-  background-color: #1E1E1E;
-  border: 1px solid transparent;
-  border-radius: 16px;
-  padding: 1.8rem;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
-  transition: all 0.3s ease;
-}
-
-.simple-project-card:hover {
-  transform: translateY(-6px);
-  border: 1px solid rgba(170, 0, 255, 0.6);
-  box-shadow: 0 0 25px rgba(170, 0, 255, 0.4);
-}
-
-.simple-project-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-  color: black;
-}
-
-.simple-project-desc {
-  font-size: 1rem;
-  color: black;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.project-btn {
-  background: transparent;
-  border: 1px solid #AA00FF;
-  color: black;
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-}
-
-.project-btn:hover {
-  background: linear-gradient(90deg, #AA00FF, #00C2FF);
-  color: #fff;
-  border-color: transparent;
-  box-shadow: 0 0 15px rgba(170, 0, 255, 0.6);
-}
 .success {
   color: #28a745; /* Green for success */
   font-weight: 500;
@@ -850,6 +780,94 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .connect-btn span {
   position: relative;
   z-index: 2;
+}
+
+/* project css */
+.project {
+  padding: 80px 0;
+  background-color: #0f0f1a;
+  color: #fff;
+}
+
+.flip-card {
+  background: transparent;
+  width: 300px;
+  height: 220px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  backface-visibility: hidden;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Front side */
+.flip-card-front {
+  background: linear-gradient(145deg, #1f1f2e, #2b2b3c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+/* Back side */
+.flip-card-back {
+  background: linear-gradient(145deg, #29293f, #1e1e2e);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  text-align: center;
+  color: #eaeaea;
+}
+
+.flip-card-back p {
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.visit-btn {
+  background: #6c63ff; /* 💜 Purple-blue color like your sample */
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.4);
+}
+
+.visit-btn:hover {
+  background: #7d72ff; /* slightly lighter hover shade */
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(108, 99, 255, 0.8);
+  transform: scale(1.05);
 }
 
 
