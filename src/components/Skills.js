@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import meter1 from "../assets/img/meter1.png";
 import meter2 from "../assets/img/meter2.png";
 import meter3 from "../assets/img/meter3.png";
-import meter4 from "../assets/img/meter4.png";  
+// ❌ Removed unused meter4 import
 import meter5 from "../assets/img/meter5.svg";
 import react from "../assets/img/react.png";
 import node from "../assets/img/nodejs.png";
@@ -48,14 +48,13 @@ export const Skills = () => {
       { img: McA, name: "Microsoft Azure" },
       { img: DockL, name: "Docker" },
       { img: AWS, name: "AWS" },
-      { img: git, name: "Git&Github" },
+      { img: git, name: "Git & GitHub" },
     ],
   };
 
   const categories = Object.keys(skillCategories);
   const skills = skillCategories[selectedCategory];
 
-  // Animation variants for the wipe effect
   const wipeVariants = {
     initial: { opacity: 0, x: 50 },
     animate: { opacity: 1, x: 0, transition: { duration: 0.6 } },
@@ -105,38 +104,35 @@ export const Skills = () => {
                     className="owl-carousel owl-theme skill-slider"
                   >
                     {skills.map((skill, index) => (
-  <motion.div
-    className="item"
-    key={index}
-    whileHover={{
-      rotateY: 20,      // slight 3D tilt
-      rotateX: -9,
-      scale: 1.05,      // gentle zoom
-    }}
-    transition={{
-      type: "spring",
-      stiffness: 200,
-      damping: 10,
-    }}
-    style={{
-      perspective: 1000, // enables 3D effect
-    }}
-  >
-    <motion.img
-      src={skill.img}
-      alt={skill.name}
-      style={{
-        borderRadius: "20px",
-        width: "150px",
-        height: "150px",
-        objectFit: "contain",
-        transition: "all 0.3s ease-in-out",
-      }}
-    />
-    <h5>{skill.name}</h5>
-  </motion.div>
-))}
-
+                      <motion.div
+                        className="item"
+                        key={index}
+                        whileHover={{
+                          rotateY: 20,
+                          rotateX: -9,
+                          scale: 1.05,
+                        }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 200,
+                          damping: 10,
+                        }}
+                        style={{ perspective: 1000 }}
+                      >
+                        <motion.img
+                          src={skill.img}
+                          alt={skill.name}
+                          style={{
+                            borderRadius: "20px",
+                            width: "150px",
+                            height: "150px",
+                            objectFit: "contain",
+                            transition: "all 0.3s ease-in-out",
+                          }}
+                        />
+                        <h5>{skill.name}</h5>
+                      </motion.div>
+                    ))}
                   </Carousel>
                 </motion.div>
               </AnimatePresence>
@@ -144,7 +140,13 @@ export const Skills = () => {
           </div>
         </div>
       </div>
-      <img className="background-image-left" src={colorSharp} alt="Image" />
+
+      {/* ✅ Fixed alt text to avoid redundancy warning */}
+      <img
+        className="background-image-left"
+        src={colorSharp}
+        alt="Decorative background"
+      />
     </section>
   );
 };
