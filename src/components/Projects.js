@@ -11,10 +11,10 @@ export const Projects = () => {
       github: "https://github.com/A-LOGESHWARAN/Resume_screener",
     },
     {
-      title: "Smart City App",
+      title: "RAG Chatbot – Document-aware AI Assistant",
       description:
-        "An Android app designed for tourists, providing information about attractions, services, and real-time city updates.",
-      github: "https://github.com/yourusername/smart-city",
+        "A Retrieval-Augmented Generation (RAG)-based chatbot built with FastAPI, FAISS vector search, and Sentence Transformers.",
+      github: "https://github.com/A-LOGESHWARAN/BOT",
     },
     {
       title: "Personalized Learning Recommender",
