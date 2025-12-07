@@ -26,7 +26,7 @@ export const Projects = () => {
       title: "Pneumonia Detection",
       description:
         "A deep learning model that detects pneumonia from chest X-ray images for faster and accurate diagnosis.",
-      github: "https://github.com/yourusername/pneumonia-detection",
+      github: "https://github.com/A-LOGESHWARAN/Chest_Resnet",
     },
   ];
 
