@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import contactImg from "../assets/img/contact-img.svg";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import { ToastContainer, toast } from 'react-toastify';
@@ -34,7 +33,7 @@ export const Contact = () => {
       email: formDetails.email,
       phone: formDetails.phone,
       message: formDetails.message,
-      access_key: "d1a0073d-5d55-4105-ae9e-d4a55e497ed4" // Replace with your API key
+      access_key: "d1a0073d-5d55-4105-ae9e-d4a55e497ed4"
     };
 
     try {
@@ -88,25 +87,69 @@ export const Contact = () => {
     <section className="contact" id="connect">
       <Container>
         <Row className="align-items-center">
-          {/* Left Side Image */}
-          <Col size={12} md={6}>
+          {/* Left Side: Contact Information */}
+          <Col md={6} size={12}>
             <TrackVisibility>
               {({ isVisible }) =>
-                <img
-                  className={isVisible ? "animate__animated animate__fadeInLeft" : ""}
-                  src={contactImg}
-                  alt="Contact Us"
-                />
+                <div className={isVisible ? "animate__animated animate__fadeInLeft" : ""} style={{
+                  paddingRight: '2rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1.5rem'
+                }}>
+                  {/* Email Card */}
+                  <div className="contact-item" style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '1rem',
+                    padding: '1.25rem',
+                    background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(192, 132, 252, 0.08))',
+                    border: '1px solid rgba(168, 85, 247, 0.3)',
+                    borderRadius: '12px',
+                    backdropFilter: 'blur(10px)'
+                  }}>
+                    <span style={{ fontSize: '1.4rem', backgroundColor: 'white', padding: '0.25rem', borderRadius: '4px' }}>📧</span>
+                    <div style={{ color: 'white', fontWeight: '500', fontSize: '1.05rem' }}>waranlogesh0406@gmail.com</div>
+                  </div>
+
+                  <div className="contact-item" style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '1rem',
+                    padding: '1.25rem',
+                    background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(192, 132, 252, 0.08))',
+                    border: '1px solid rgba(168, 85, 247, 0.3)',
+                    borderRadius: '12px',
+                    backdropFilter: 'blur(10px)'
+                  }}>
+                    <span style={{ fontSize: '1.4rem', backgroundColor: 'white', padding: '0.25rem', borderRadius: '4px' }}>📧</span>
+                    <div style={{ color: 'white', fontWeight: '500', fontSize: '1.05rem' }}>+91 9176966556</div>
+                  </div>
+                  {/* Location Card */}
+                  <div className="contact-item" style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '1rem',
+                    padding: '1.25rem',
+                    background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(192, 132, 252, 0.08))',
+                    border: '1px solid rgba(168, 85, 247, 0.3)',
+                    borderRadius: '12px',
+                    backdropFilter: 'blur(10px)'
+                  }}>
+                    <span style={{ fontSize: '1.4rem', color: '#ef4444' }}>📍</span>
+                    <div style={{ color: 'white', fontWeight: '500', fontSize: '1.05rem' }}>Chennai, India</div>
+                  </div>
+                </div>
               }
             </TrackVisibility>
           </Col>
 
-          {/* Right Side Form */}
-          <Col size={12} md={6}>
+          {/* Right Side: Form */}
+          <Col md={6} size={12}>
             <TrackVisibility>
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__fadeInRight" : ""}>
-                  <h2>Get In Touch</h2>
+                  <h2 style={{ color: '#ffffffff' }}>Get In Touch</h2>
                   <form onSubmit={handleSubmit}>
                     <Row>
                       <Col size={12} sm={6} className="px-1">
@@ -116,6 +159,7 @@ export const Contact = () => {
                           placeholder="First Name"
                           onChange={(e) => onFormUpdate('firstName', e.target.value)}
                           required
+                          style={{ borderRadius: '8px', border: '1px solid rgba(168, 85, 247, 0.3)', padding: '12px', background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(192, 132, 252, 0.15))' }}
                         />
                       </Col>
                       <Col size={12} sm={6} className="px-1">
@@ -125,6 +169,7 @@ export const Contact = () => {
                           placeholder="Last Name"
                           onChange={(e) => onFormUpdate('lastName', e.target.value)}
                           required
+                          style={{ borderRadius: '8px', border: '1px solid rgba(168, 85, 247, 0.3)', padding: '12px', background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(192, 132, 252, 0.15))' }}
                         />
                       </Col>
                       <Col size={12} sm={6} className="px-1">
@@ -134,6 +179,7 @@ export const Contact = () => {
                           placeholder="Email Address"
                           onChange={(e) => onFormUpdate('email', e.target.value)}
                           required
+                          style={{ borderRadius: '8px', border: '1px solid rgba(168, 85, 247, 0.3)', padding: '12px', background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(192, 132, 252, 0.15))' }}
                         />
                       </Col>
                       <Col size={12} sm={6} className="px-1">
@@ -142,6 +188,7 @@ export const Contact = () => {
                           value={formDetails.phone}
                           placeholder="Phone No."
                           onChange={(e) => onFormUpdate('phone', e.target.value)}
+                          style={{ borderRadius: '8px', border: '1px solid rgba(168, 85, 247, 0.3)', padding: '12px', background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(192, 132, 252, 0.15))' }}
                         />
                       </Col>
                       <Col size={12} className="px-1">
@@ -151,10 +198,19 @@ export const Contact = () => {
                           placeholder="Message"
                           onChange={(e) => onFormUpdate('message', e.target.value)}
                           required
-                        ></textarea>
-                        <button
-                          type="submit"
+                          style={{ borderRadius: '8px', border: '2px solid #a855f7', padding: '12px', background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(192, 132, 252, 0.15))', color: 'white' }}
+                        />
+                        <button 
+                          type="submit" 
                           className="animate__animated animate__pulse hover:animate__infinite"
+                          style={{ 
+                            background: 'linear-gradient(135deg, #a855f7, #c084fc)', 
+                            border: 'none', 
+                            borderRadius: '8px', 
+                            color: 'white', 
+                            padding: '12px 24px',
+                            marginTop: '1rem'
+                          }}
                         >
                           <span>{buttonText}</span>
                         </button>
@@ -167,7 +223,6 @@ export const Contact = () => {
           </Col>
         </Row>
       </Container>
-      {/* Toast Notifications */}
       <ToastContainer />
     </section>
   );
