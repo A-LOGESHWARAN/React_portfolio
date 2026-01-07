@@ -19,7 +19,7 @@ export const Projects = () => {
     {
       title: "Hand-to-Virtual-Boundary Detection POC",
       description:
-        "This real-time Hand-to-Virtual-Boundary Detection POC tracks a user’s hand using only classical computer vision (OpenCV + NumPy) techniques, without external pose APIs. It detects proximity to a virtual boundary and provides dynamic visual feedback (SAFE, WARNING, DANGER) based on hand distance in real time.",
+        "Developed a real-time Hand-to-Virtual-Boundary Detection POC using classical computer vision with OpenCV and NumPy, without external pose APIs.",
       github: "https://github.com/A-LOGESHWARAN/HandTracking_POC",
     },
     {
@@ -31,7 +31,7 @@ export const Projects = () => {
     {
       title: "Patient Risk Prediction",
       description:
-        "A deep learning model that detects pneumonia from chest X-ray images for faster and accurate diagnosis.",
+        "Developed an end-to-end ICU Patient Deterioration Prediction System using XGBoost, SMOTE, and Optuna for 88%+ accuracy on 1M patient records.",
       github: "https://github.com/A-LOGESHWARAN/Patient_Risk_Prediction",
     },
     
