@@ -17,10 +17,10 @@ export const Projects = () => {
       github: "https://github.com/A-LOGESHWARAN/BOT",
     },
     {
-      title: "Personalized Learning Recommender",
+      title: "Hand-to-Virtual-Boundary Detection POC",
       description:
-        "An AutoML-powered system that suggests personalized learning paths by comparing neural activation functions like ReLU, Sigmoid, and Softmax.",
-      github: "https://github.com/yourusername/learning-recommender",
+        "This real-time Hand-to-Virtual-Boundary Detection POC tracks a user’s hand using only classical computer vision (OpenCV + NumPy) techniques, without external pose APIs. It detects proximity to a virtual boundary and provides dynamic visual feedback (SAFE, WARNING, DANGER) based on hand distance in real time.",
+      github: "https://github.com/A-LOGESHWARAN/HandTracking_POC",
     },
     {
       title: "Pneumonia Detection",
@@ -28,6 +28,13 @@ export const Projects = () => {
         "A deep learning model that detects pneumonia from chest X-ray images for faster and accurate diagnosis.",
       github: "https://github.com/A-LOGESHWARAN/Chest_Resnet",
     },
+    {
+      title: "Patient Risk Prediction",
+      description:
+        "A deep learning model that detects pneumonia from chest X-ray images for faster and accurate diagnosis.",
+      github: "https://github.com/A-LOGESHWARAN/Patient_Risk_Prediction",
+    },
+    
   ];
 
   return (
