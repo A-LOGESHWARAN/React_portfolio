@@ -34,6 +34,12 @@ export const Projects = () => {
         "Developed an end-to-end ICU Patient Deterioration Prediction System using XGBoost, SMOTE, and Optuna for 88%+ accuracy on 1M patient records.",
       github: "https://github.com/A-LOGESHWARAN/Patient_Risk_Prediction",
     },
+    {
+      title: "Multi-Vendor E-Commerce Platform with Role-Based Dashboards",
+      description:
+        "Built a scalable MERN-stack e-commerce system with JWT authentication, role-based authorization, MongoDB data modeling, seller approval flows, order lifecycle management, and a chatbot-assisted buyer experience.",
+      github: "https://final-ecom-six.vercel.app/",
+    },
     
   ];
 
