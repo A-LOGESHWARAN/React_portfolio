@@ -59,7 +59,18 @@ export const Banner = () => {
                 <span className="tagline">ARTIFICIAL INTELLIGENCE & MACHINE LEARNING</span>
                 <h1>{`I'm LOGESHWARAN A`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'><span className="wrap">{text}</span></span></h1>
                   <p>Passionate Full Stack Developer and ML Engineer with a strong foundation in building intelligent, data-driven web applications. Skilled in combining machine learning models with elegant UI/UX designs to create seamless and impactful digital experiences.Skilled in deploying and managing scalable applications on AWS, Azure, and GCP using modern DevOps practices. Passionate about building secure, efficient, and serverless cloud solutions for real-world applications.</p>
-                    
+                  <div style={{ marginTop: '30px', display: 'flex', gap: '15px' }}>
+                    <a href="#projects" style={{ textDecoration: 'none' }}>
+                      <button className="connect-btn" style={{ background: '#6c63ff', border: 'none' }}>
+                        <span>View My Projects</span> <ArrowRightCircle size={25} />
+                      </button>
+                    </a>
+                    <a href="#publications" style={{ textDecoration: 'none' }}>
+                      <button className="connect-btn" style={{ background: '#6c63ff', border: 'none' }}>
+                        <span>View Publications</span> <ArrowRightCircle size={25} />
+                      </button>
+                    </a>
+                  </div>
               </div>}
             </TrackVisibility>
           </Col>

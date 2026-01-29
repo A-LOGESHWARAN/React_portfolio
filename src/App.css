@@ -377,6 +377,61 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     letter-spacing: 0.8px;
     line-height: 1.5em;
     margin: 14px 0 75px 0;
+
+/* Enhanced Skills Category Buttons */
+.category-btn {
+  padding: 10px 20px;
+  border: 2px solid rgba(108, 99, 255, 0.3);
+  border-radius: 25px;
+  background: linear-gradient(145deg, rgba(31, 31, 46, 0.5), rgba(43, 43, 60, 0.3));
+  color: #b0b0b0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(10px);
+  font-family: 'Centra', sans-serif;
+}
+
+.category-btn:hover {
+  background: linear-gradient(145deg, rgba(108, 99, 255, 0.3), rgba(108, 99, 255, 0.15));
+  border-color: #6c63ff;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(108, 99, 255, 0.3);
+}
+
+.category-btn.active {
+  background: linear-gradient(145deg, #6c63ff, #7d72ff);
+  border-color: #6c63ff;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(108, 99, 255, 0.6);
+  transform: scale(1.05);
+}
+
+/* Enhanced Skill Items */
+.skill-slider .item {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skill-slider .item h5 {
+  font-family: 'Centra', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #e0e0e0;
+  transition: color 0.3s ease;
+}
+
+.skill-slider .item:hover h5 {
+  color: #6c63ff;
+}
+
+/* Skill box improvements */
+.skill-bx {
+  background: linear-gradient(145deg, #1a1a24, #232330);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(108, 99, 255, 0.1);
+}
 }
 .skill-slider {
   width: 80%;
@@ -386,6 +441,24 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .skill-slider .item img {
   width: 50%;
   margin: 0 auto 15px auto;
+}
+
+/* Smoother skill item visuals */
+.skill-slider .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity;
+}
+
+.skill-slider .item img {
+  transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.35s;
+}
+
+.skill-slider .item:hover img {
+  transform: translateY(-6px) scale(1.03);
+  filter: drop-shadow(0 14px 28px rgba(108,99,255,0.16));
 }
 .background-image-left {
   top: 28%;
@@ -870,5 +943,209 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   transform: scale(1.05);
 }
 
+/* Publications CSS */
+.publication {
+  padding: 80px 0;
+  background-color: #0f0f1a;
+  color: #fff;
+  font-family: 'Centra', sans-serif;
+}
 
+.publication h2 {
+  font-size: 45px;
+  font-weight: 700;
+  font-family: 'Centra', sans-serif;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
 
+.publication p {
+  color: #B8B8B8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  margin: 14px auto 30px auto;
+  text-align: center;
+  width: 56%;
+  font-family: 'Centra', sans-serif;
+}
+
+.read-btn {
+  background: #6c63ff;
+  color: #fff;
+  border: none;
+  padding: 9px 5px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px rgba(108, 99, 255, 0.4);
+  font-family: 'Centra', sans-serif;
+}
+
+.read-btn:hover {
+  background: #7d72ff;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(108, 99, 255, 0.8);
+  color: #fff;
+}
+
+.publication-card:hover {
+  cursor: pointer;
+}
+
+/* Statistics Section CSS */
+.statistics {
+  padding: 80px 0;
+  background-color: #0f0f1a;
+  color: #fff;
+  font-family: 'Centra', sans-serif;
+}
+
+.statistics h2 {
+  font-size: 45px;
+  font-weight: 700;
+  font-family: 'Centra', sans-serif;
+  text-align: center;
+  margin-bottom: 3rem;
+  background: linear-gradient(90deg, #6c63ff, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-card {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card:hover {
+  box-shadow: 0 20px 40px rgba(108, 99, 255, 0.3);
+}
+
+/* Enhanced Animations */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(108, 99, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(108, 99, 255, 0);
+  }
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Apply animations to specific sections */
+.banner {
+  animation: slideInDown 0.8s ease-out;
+}
+
+.skills {
+  animation: slideInUp 0.8s ease-out;
+}
+
+.project {
+  animation: fadeInScale 0.8s ease-out;
+}
+
+.publication {
+  animation: slideInUp 0.8s ease-out;
+}
+
+.statistics {
+  animation: slideInUp 0.8s ease-out;
+}
+
+.stat-icon:hover {
+  animation: iconBounce 0.6s ease-in-out;
+}
+
+.stat-card:hover {
+  animation: pulse 1s ease-out;
+}
+
+/* Smooth transitions */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Improve button animations */
+.connect-btn {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.connect-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(108, 99, 255, 0.4);
+}
+
+/* Card animations */
+.project-card,
+.publication-card,
+.stat-card {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import TrackVisibility from "react-on-screen";
 import meter1 from "../assets/img/meter1.png";
 import meter2 from "../assets/img/meter2.png";
 import meter3 from "../assets/img/meter3.png";
@@ -61,82 +62,154 @@ export const Skills = () => {
     exit: { opacity: 0, x: -50, transition: { duration: 0.4 } },
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  };
+
+  const skillCardVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: { type: "spring", stiffness: 100, damping: 15 },
+    },
+  };
+
   return (
     <section className="skill" id="skills">
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <div className="skill-bx wow zoomIn">
-              <h2>Skills</h2>
-              <p>
-                I specialize in Full Stack Development, Machine Learning, and
-                UI/UX Design — combining technical expertise with creative
-                problem-solving.
-              </p>
-
-              {/* 🌟 Category Tabs */}
-              <div className="category-tabs">
-                {categories.map((cat) => (
-                  <button
-                    key={cat}
-                    className={`category-btn ${
-                      selectedCategory === cat ? "active" : ""
-                    }`}
-                    onClick={() => setSelectedCategory(cat)}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
-
-              {/* 🌈 Animated Skill Carousel */}
-              <AnimatePresence mode="wait">
+            <TrackVisibility>
+              {({ isVisible }) => (
                 <motion.div
-                  key={selectedCategory}
-                  variants={wipeVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
+                  className="skill-bx wow zoomIn"
+                  initial="hidden"
+                  animate={isVisible ? "visible" : "hidden"}
+                  variants={containerVariants}
                 >
-                  <Carousel
-                    responsive={responsive}
-                    infinite={true}
-                    className="owl-carousel owl-theme skill-slider"
+                  <motion.h2 variants={itemVariants} style={{ fontFamily: "'Centra', sans-serif" }}>
+                    Skills
+                  </motion.h2>
+                  <motion.p variants={itemVariants} style={{ fontFamily: "'Centra', sans-serif" }}>
+                    I specialize in Full Stack Development, Machine Learning, and
+                    UI/UX Design — combining technical expertise with creative
+                    problem-solving.
+                  </motion.p>
+
+                  {/* 🌟 Animated Category Tabs */}
+                  <motion.div
+                    className="category-tabs"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={isVisible ? "visible" : "hidden"}
                   >
-                    {skills.map((skill, index) => (
-                      <motion.div
-                        className="item"
-                        key={index}
-                        whileHover={{
-                          rotateY: 20,
-                          rotateX: -9,
-                          scale: 1.05,
-                        }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 200,
-                          damping: 10,
-                        }}
-                        style={{ perspective: 1000 }}
+                    {categories.map((cat, index) => (
+                      <motion.button
+                        key={cat}
+                        className={`category-btn ${
+                          selectedCategory === cat ? "active" : ""
+                        }`}
+                        onClick={() => setSelectedCategory(cat)}
+                        variants={itemVariants}
+                        whileHover={{ scale: 1.1, y: -3 }}
+                        whileTap={{ scale: 0.95 }}
                       >
-                        <motion.img
-                          src={skill.img}
-                          alt={skill.name}
-                          style={{
-                            borderRadius: "20px",
-                            width: "150px",
-                            height: "150px",
-                            objectFit: "contain",
-                            transition: "all 0.3s ease-in-out",
-                          }}
-                        />
-                        <h5>{skill.name}</h5>
-                      </motion.div>
+                        {cat}
+                      </motion.button>
                     ))}
-                  </Carousel>
+                  </motion.div>
+
+                  {/* 🌈 Animated Skill Carousel */}
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={selectedCategory}
+                      variants={wipeVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                    >
+                      <Carousel
+                        responsive={responsive}
+                        infinite={true}
+                        className="owl-carousel owl-theme skill-slider"
+                      >
+                        {skills.map((skill, index) => (
+                          <motion.div
+                            className="item"
+                            key={index}
+                            variants={skillCardVariants}
+                            initial="hidden"
+                            animate="visible"
+                            whileHover={{
+                              rotateY: 8,
+                              rotateX: -4,
+                              scale: 1.03,
+                              boxShadow: "0 18px 36px rgba(108, 99, 255, 0.28)",
+                            }}
+                            transition={{
+                              type: "spring",
+                              stiffness: 80,
+                              damping: 12,
+                            }}
+                            style={{
+                              perspective: 1200,
+                              padding: "15px",
+                              borderRadius: "20px",
+                              background: "linear-gradient(145deg, rgba(31, 31, 46, 0.45), rgba(43, 43, 60, 0.35))",
+                              backdropFilter: "blur(8px)",
+                              border: "1px solid rgba(108, 99, 255, 0.12)",
+                            }}
+                          >
+                            <motion.img
+                              src={skill.img}
+                              alt={skill.name}
+                              animate={{ y: [0, -6, 0] }}
+                              transition={{ duration: 4 + index * 0.3, repeat: Infinity, ease: "easeInOut" }}
+                              whileHover={{ rotate: 6, scale: 1.06 }}
+                              style={{
+                                borderRadius: "18px",
+                                width: "150px",
+                                height: "150px",
+                                objectFit: "contain",
+                                transition: "all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                                filter: "drop-shadow(0 10px 20px rgba(108, 99, 255, 0.14))",
+                                margin: "0 auto",
+                                display: "block",
+                              }}
+                            />
+                            <motion.h5
+                              style={{ fontFamily: "'Centra', sans-serif", marginTop: "15px" }}
+                              initial={{ opacity: 0, y: 6 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.25 + index * 0.05 }}
+                            >
+                              {skill.name}
+                            </motion.h5>
+                          </motion.div>
+                        ))}
+                      </Carousel>
+                    </motion.div>
+                  </AnimatePresence>
                 </motion.div>
-              </AnimatePresence>
-            </div>
+              )}
+            </TrackVisibility>
           </div>
         </div>
       </div>
