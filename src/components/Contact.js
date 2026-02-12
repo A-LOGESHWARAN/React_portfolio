@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import 'animate.css';
-import TrackVisibility from 'react-on-screen';
+import { motion } from "framer-motion";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -48,38 +47,40 @@ export const Contact = () => {
       setButtonText("Send");
 
       if (result.success) {
-        toast.success('Thank you! Your message has been sent successfully. We will get back to you shortly.', {
+        toast.success('Thank you! Your message has been sent successfully.', {
           position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme: "light",
+          theme: "dark",
         });
       } else {
-        toast.error('Apologies, there was an issue submitting your message. Please try again later.', {
+        toast.error('Something went wrong. Please try again later.', {
           position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme: "light",
+          theme: "dark",
         });
       }
     } catch (err) {
       console.error(err);
       setButtonText("Send");
-      toast.error('Unable to submit the message at the moment. Please check your connection or try again later.', {
+      toast.error('Network error. Please try again later.', {
         position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        theme: "light",
+        theme: "dark",
       });
+    }
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", stiffness: 100 }
     }
   };
 
@@ -87,139 +88,137 @@ export const Contact = () => {
     <section className="contact" id="connect">
       <Container>
         <Row className="align-items-center">
-          {/* Left Side: Contact Information */}
           <Col md={6} size={12}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__fadeInLeft" : ""} style={{
-                  paddingRight: '2rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '1.5rem'
-                }}>
-                  {/* Email Card */}
-                  <div className="contact-item" style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '1rem',
-                    padding: '1.25rem',
-                    background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(192, 132, 252, 0.08))',
-                    border: '1px solid rgba(168, 85, 247, 0.3)',
-                    borderRadius: '12px',
-                    backdropFilter: 'blur(10px)'
-                  }}>
-                    <span style={{ fontSize: '1.4rem', backgroundColor: 'white', padding: '0.25rem', borderRadius: '4px' }}>📧</span>
-                    <div style={{ color: 'white', fontWeight: '500', fontSize: '1.05rem' }}>waranlogesh0406@gmail.com</div>
-                  </div>
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              style={{
+                paddingRight: '2rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.5rem'
+              }}
+            >
+              <motion.h2 variants={itemVariants} style={{ marginBottom: '1rem' }}>
+                Let's Connect
+              </motion.h2>
 
-                  <div className="contact-item" style={{
+              {[
+                { icon: "📧", text: "waranlogesh0406@gmail.com" },
+                { icon: "📱", text: "+91 9176966556" },
+                { icon: "📍", text: "Chennai, India" }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.02, x: 5 }}
+                  className="contact-item"
+                  style={{
                     display: 'flex',
-                    alignItems: 'flex-start',
+                    alignItems: 'center',
                     gap: '1rem',
                     padding: '1.25rem',
-                    background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(192, 132, 252, 0.08))',
-                    border: '1px solid rgba(168, 85, 247, 0.3)',
-                    borderRadius: '12px',
-                    backdropFilter: 'blur(10px)'
-                  }}>
-                    <span style={{ fontSize: '1.4rem', backgroundColor: 'white', padding: '0.25rem', borderRadius: '4px' }}>📧</span>
-                    <div style={{ color: 'white', fontWeight: '500', fontSize: '1.05rem' }}>+91 9176966556</div>
-                  </div>
-                  {/* Location Card */}
-                  <div className="contact-item" style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '1rem',
-                    padding: '1.25rem',
-                    background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(192, 132, 252, 0.08))',
-                    border: '1px solid rgba(168, 85, 247, 0.3)',
-                    borderRadius: '12px',
-                    backdropFilter: 'blur(10px)'
-                  }}>
-                    <span style={{ fontSize: '1.4rem', color: '#ef4444' }}>📍</span>
-                    <div style={{ color: 'white', fontWeight: '500', fontSize: '1.05rem' }}>Chennai, India</div>
-                  </div>
-                </div>
-              }
-            </TrackVisibility>
+                    background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(192, 132, 252, 0.05))',
+                    border: '1px solid rgba(168, 85, 247, 0.2)',
+                    borderRadius: '16px',
+                    backdropFilter: 'blur(10px)',
+                    cursor: 'default'
+                  }}
+                >
+                  <span style={{ fontSize: '1.5rem' }}>{item.icon}</span>
+                  <div style={{ color: '#e0e0e0', fontWeight: '500', fontSize: '1.1rem' }}>{item.text}</div>
+                </motion.div>
+              ))}
+            </motion.div>
           </Col>
 
-          {/* Right Side: Form */}
           <Col md={6} size={12}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__fadeInRight" : ""}>
-                  <h2 style={{ color: '#ffffffff' }}>Get In Touch</h2>
-                  <form onSubmit={handleSubmit}>
-                    <Row>
-                      <Col size={12} sm={6} className="px-1">
-                        <input
-                          type="text"
-                          value={formDetails.firstName}
-                          placeholder="First Name"
-                          onChange={(e) => onFormUpdate('firstName', e.target.value)}
-                          required
-                          style={{ borderRadius: '8px', border: '1px solid rgba(168, 85, 247, 0.3)', padding: '12px', background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(192, 132, 252, 0.15))' }}
-                        />
-                      </Col>
-                      <Col size={12} sm={6} className="px-1">
-                        <input
-                          type="text"
-                          value={formDetails.lastName}
-                          placeholder="Last Name"
-                          onChange={(e) => onFormUpdate('lastName', e.target.value)}
-                          required
-                          style={{ borderRadius: '8px', border: '1px solid rgba(168, 85, 247, 0.3)', padding: '12px', background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(192, 132, 252, 0.15))' }}
-                        />
-                      </Col>
-                      <Col size={12} sm={6} className="px-1">
-                        <input
-                          type="email"
-                          value={formDetails.email}
-                          placeholder="Email Address"
-                          onChange={(e) => onFormUpdate('email', e.target.value)}
-                          required
-                          style={{ borderRadius: '8px', border: '1px solid rgba(168, 85, 247, 0.3)', padding: '12px', background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(192, 132, 252, 0.15))' }}
-                        />
-                      </Col>
-                      <Col size={12} sm={6} className="px-1">
-                        <input
-                          type="tel"
-                          value={formDetails.phone}
-                          placeholder="Phone No."
-                          onChange={(e) => onFormUpdate('phone', e.target.value)}
-                          style={{ borderRadius: '8px', border: '1px solid rgba(168, 85, 247, 0.3)', padding: '12px', background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(192, 132, 252, 0.15))' }}
-                        />
-                      </Col>
-                      <Col size={12} className="px-1">
-                        <textarea
-                          rows="6"
-                          value={formDetails.message}
-                          placeholder="Message"
-                          onChange={(e) => onFormUpdate('message', e.target.value)}
-                          required
-                          style={{ borderRadius: '8px', border: '2px solid #a855f7', padding: '12px', background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(192, 132, 252, 0.15))', color: 'white' }}
-                        />
-                        <button 
-                          type="submit" 
-                          className="animate__animated animate__pulse hover:animate__infinite"
-                          style={{ 
-                            background: 'linear-gradient(135deg, #a855f7, #c084fc)', 
-                            border: 'none', 
-                            borderRadius: '8px', 
-                            color: 'white', 
-                            padding: '12px 24px',
-                            marginTop: '1rem'
-                          }}
-                        >
-                          <span>{buttonText}</span>
-                        </button>
-                      </Col>
-                    </Row>
-                  </form>
-                </div>
-              }
-            </TrackVisibility>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 style={{ marginBottom: '2rem' }}>Get In Touch</h2>
+              <form onSubmit={handleSubmit}>
+                <Row>
+                  {[
+                    { val: formDetails.firstName, ph: "First Name", key: 'firstName', type: "text" },
+                    { val: formDetails.lastName, ph: "Last Name", key: 'lastName', type: "text" },
+                    { val: formDetails.email, ph: "Email Address", key: 'email', type: "email" },
+                    { val: formDetails.phone, ph: "Phone No.", key: 'phone', type: "tel" }
+                  ].map((field, index) => (
+                    <Col size={12} sm={6} className="px-1" key={index}>
+                      <motion.input
+                        whileFocus={{ scale: 1.02, borderColor: '#a855f7' }}
+                        type={field.type}
+                        value={field.val}
+                        placeholder={field.ph}
+                        onChange={(e) => onFormUpdate(field.key, e.target.value)}
+                        required={field.key !== 'phone'} // Phone optional? Usually yes, but user had no required on phone in original either
+                        style={{
+                          width: '100%',
+                          background: 'rgba(255, 255, 255, 0.1)',
+                          border: '1px solid rgba(255, 255, 255, 0.5)',
+                          borderRadius: '20px',
+                          color: '#fff',
+                          margin: '0 0 8px 0',
+                          padding: '18px 26px',
+                          fontWeight: '500',
+                          fontSize: '18px',
+                          letterSpacing: '0.8px',
+                          transition: '0.3s'
+                        }}
+                      />
+                    </Col>
+                  ))}
+                  <Col size={12} className="px-1">
+                    <motion.textarea
+                      whileFocus={{ scale: 1.01, borderColor: '#a855f7' }}
+                      rows="6"
+                      value={formDetails.message}
+                      placeholder="Message"
+                      onChange={(e) => onFormUpdate('message', e.target.value)}
+                      required
+                      style={{
+                        width: '100%',
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        border: '1px solid rgba(255, 255, 255, 0.5)',
+                        borderRadius: '20px',
+                        color: '#fff',
+                        margin: '0 0 8px 0',
+                        padding: '18px 26px',
+                        fontWeight: '500',
+                        fontSize: '18px',
+                        letterSpacing: '0.8px',
+                        transition: '0.3s'
+                      }}
+                    />
+                    <motion.button
+                      type="submit"
+                      whileHover={{ scale: 1.05, backgroundColor: '#fff', color: '#000' }}
+                      whileTap={{ scale: 0.95 }}
+                      style={{
+                        padding: '14px 48px',
+                        fontSize: '18px',
+                        fontWeight: '700',
+                        color: '#000',
+                        background: '#fff',
+                        borderRadius: '20px',
+                        border: 'none',
+                        marginTop: '20px',
+                        position: 'relative',
+                        overflow: 'hidden'
+                      }}
+                    >
+                      {buttonText}
+                    </motion.button>
+                  </Col>
+                </Row>
+              </form>
+            </motion.div>
           </Col>
         </Row>
       </Container>

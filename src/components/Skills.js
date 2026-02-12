@@ -16,8 +16,6 @@ import DockL from "../assets/img/DockL.png";
 import AWS from "../assets/img/AWS.png";
 import git from "../assets/img/git.png";
 import pytorch from "../assets/img/pytorch.webp";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import colorSharp from "../assets/img/color-sharp.png";
 
 export const Skills = () => {
@@ -67,28 +65,34 @@ export const Skills = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.15,
         delayChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 },
+      transition: { duration: 0.6, ease: "easeOut" },
     },
   };
 
   const skillCardVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: 1,
+    hidden: { opacity: 0, scale: 0.8, y: 20 },
+    visible: (index) => ({
       opacity: 1,
-      transition: { type: "spring", stiffness: 100, damping: 15 },
-    },
+      scale: 1,
+      y: 0,
+      transition: {
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 100,
+        damping: 10,
+      },
+    }),
   };
 
   return (
@@ -96,12 +100,13 @@ export const Skills = () => {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <TrackVisibility>
+            <TrackVisibility partialVisibility>
               {({ isVisible }) => (
                 <motion.div
-                  className="skill-bx wow zoomIn"
+                  className="skill-bx"
                   initial="hidden"
-                  animate={isVisible ? "visible" : "hidden"}
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
                   variants={containerVariants}
                 >
                   <motion.h2 variants={itemVariants} style={{ fontFamily: "'Centra', sans-serif" }}>
@@ -117,18 +122,15 @@ export const Skills = () => {
                   <motion.div
                     className="category-tabs"
                     variants={containerVariants}
-                    initial="hidden"
-                    animate={isVisible ? "visible" : "hidden"}
                   >
                     {categories.map((cat, index) => (
                       <motion.button
                         key={cat}
-                        className={`category-btn ${
-                          selectedCategory === cat ? "active" : ""
-                        }`}
+                        className={`category-btn ${selectedCategory === cat ? "active" : ""
+                          }`}
                         onClick={() => setSelectedCategory(cat)}
                         variants={itemVariants}
-                        whileHover={{ scale: 1.1, y: -3 }}
+                        whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
                       >
                         {cat}
@@ -136,77 +138,31 @@ export const Skills = () => {
                     ))}
                   </motion.div>
 
-                  {/* 🌈 Animated Skill Carousel */}
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={selectedCategory}
-                      variants={wipeVariants}
-                      initial="initial"
-                      animate="animate"
-                      exit="exit"
-                    >
-                      <Carousel
-                        responsive={responsive}
-                        infinite={true}
-                        className="owl-carousel owl-theme skill-slider"
-                      >
-                        {skills.map((skill, index) => (
+                  {/* 🌈 Continuous Marquee Animation */}
+                  <div className="skill-marquee-container">
+                    <div className="marquee-track">
+                      {/* Duplicate skills for seamless loop (4 sets) */}
+                      {[...skills, ...skills, ...skills, ...skills].map((skill, index) => (
+                        <div className="marquee-item" key={`${skill.name}-${index}`}>
                           <motion.div
-                            className="item"
-                            key={index}
-                            variants={skillCardVariants}
-                            initial="hidden"
-                            animate="visible"
+                            className="skill-card"
                             whileHover={{
-                              rotateY: 8,
-                              rotateX: -4,
-                              scale: 1.03,
-                              boxShadow: "0 18px 36px rgba(108, 99, 255, 0.28)",
+                              y: -5,
+                              scale: 1.05,
+                              boxShadow: "0 10px 30px rgba(108, 99, 255, 0.4)",
+                              borderColor: "#6c63ff",
                             }}
-                            transition={{
-                              type: "spring",
-                              stiffness: 80,
-                              damping: 12,
-                            }}
-                            style={{
-                              perspective: 1200,
-                              padding: "15px",
-                              borderRadius: "20px",
-                              background: "linear-gradient(145deg, rgba(31, 31, 46, 0.45), rgba(43, 43, 60, 0.35))",
-                              backdropFilter: "blur(8px)",
-                              border: "1px solid rgba(108, 99, 255, 0.12)",
-                            }}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3 }}
                           >
-                            <motion.img
-                              src={skill.img}
-                              alt={skill.name}
-                              animate={{ y: [0, -6, 0] }}
-                              transition={{ duration: 4 + index * 0.3, repeat: Infinity, ease: "easeInOut" }}
-                              whileHover={{ rotate: 6, scale: 1.06 }}
-                              style={{
-                                borderRadius: "18px",
-                                width: "150px",
-                                height: "150px",
-                                objectFit: "contain",
-                                transition: "all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-                                filter: "drop-shadow(0 10px 20px rgba(108, 99, 255, 0.14))",
-                                margin: "0 auto",
-                                display: "block",
-                              }}
-                            />
-                            <motion.h5
-                              style={{ fontFamily: "'Centra', sans-serif", marginTop: "15px" }}
-                              initial={{ opacity: 0, y: 6 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: 0.25 + index * 0.05 }}
-                            >
-                              {skill.name}
-                            </motion.h5>
+                            <img src={skill.img} alt={skill.name} />
+                            <h5>{skill.name}</h5>
                           </motion.div>
-                        ))}
-                      </Carousel>
-                    </motion.div>
-                  </AnimatePresence>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </motion.div>
               )}
             </TrackVisibility>
