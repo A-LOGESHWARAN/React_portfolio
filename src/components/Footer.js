@@ -17,7 +17,7 @@ export const Footer = () => {
           <Col md={4} className="text-center mb-3 mb-md-0">
             <div className="social-icon">
               <motion.a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/logeshwaran-ashok-022967257/"
                 target="_blank"
                 rel="noreferrer"
                 className="mx-2"
@@ -27,7 +27,7 @@ export const Footer = () => {
                 <img src={navIcon1} alt="LinkedIn" style={{ height: 28 }} />
               </motion.a>
               <motion.a
-                href="https://github.com"
+                href="https://github.com/A-LOGESHWARAN"
                 target="_blank"
                 rel="noreferrer"
                 className="mx-2"
@@ -37,7 +37,7 @@ export const Footer = () => {
                 <img src={navIcon2} alt="GitHub" style={{ height: 28 }} />
               </motion.a>
               <motion.a
-                href="https://twitter.com"
+                href="https://www.instagram.com/logeshwaranashok/"
                 target="_blank"
                 rel="noreferrer"
                 className="mx-2"
