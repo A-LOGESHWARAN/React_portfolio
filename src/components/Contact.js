@@ -95,10 +95,11 @@ export const Contact = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               style={{
-                paddingRight: '2rem',
+                paddingRight: 'clamp(0px, 2rem, 2rem)',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '1.5rem'
+                gap: '1.5rem',
+                marginBottom: '2rem',
               }}
             >
               <motion.h2 variants={itemVariants} style={{ marginBottom: '1rem' }}>

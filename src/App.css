@@ -400,9 +400,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
 }
 
-.txt-rotate>.wrap {
-  border-right: 0.08em solid #666;
-}
+/* .txt-rotate>.wrap — cursor border removed; fade animation used instead */
 
 /************ Skills Css ************/
 .skill {
@@ -1297,4 +1295,233 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .publication-card,
 .stat-card {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================================
+   MOBILE RESPONSIVENESS — ≤ 768px
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* ── Navbar ── */
+  nav.navbar {
+    padding: 12px 0;
+  }
+
+  nav.navbar .navbar-nav .nav-link.navbar-link {
+    padding: 8px 12px;
+    font-size: 16px;
+  }
+
+  .navbar-text {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    padding-bottom: 12px;
+  }
+
+  .social-icon {
+    margin-left: 0;
+  }
+
+  .connect-btn {
+    padding: 8px 20px;
+    font-size: 0.95rem;
+  }
+
+  /* ── Banner ── */
+  .banner {
+    padding: 130px 0 60px 0;
+    text-align: center;
+  }
+
+  .banner h1 {
+    font-size: 38px;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .banner .tagline {
+    font-size: 14px;
+    padding: 6px 10px;
+    margin-bottom: 12px;
+  }
+
+  .banner p {
+    font-size: 15px;
+    width: 100%;
+    line-height: 1.6;
+  }
+
+  .banner button {
+    font-size: 16px;
+    margin-top: 0;
+    padding: 10px 20px;
+    justify-content: center;
+  }
+
+  /* Stack CTA buttons vertically and centre */
+  .banner .aligh-items-center>div[style] {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Hero image — smaller circle, centred */
+  .banner img {
+    width: 220px !important;
+    height: 240px !important;
+    margin: 30px auto 0;
+    display: block;
+  }
+
+  /* ── Skills ── */
+  .skill-bx {
+    border-radius: 32px;
+    padding: 40px 20px;
+  }
+
+  .skill h2 {
+    font-size: 32px;
+  }
+
+  .category-tabs {
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .category-btn {
+    font-size: 0.82rem;
+    padding: 7px 14px;
+  }
+
+  .skill-marquee-container {
+    max-width: 100%;
+    padding: 12px 0;
+  }
+
+  .skill-card {
+    padding: 16px 10px;
+  }
+
+  .skill-card img {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 10px;
+  }
+
+  .skill-card h5 {
+    font-size: 0.85rem;
+  }
+
+  /* ── Projects ── */
+  .project {
+    padding: 50px 0;
+  }
+
+  .project h2 {
+    font-size: 32px;
+  }
+
+  .project p {
+    font-size: 15px;
+    width: 90%;
+  }
+
+  /* ── Publications ── */
+  .publication {
+    padding: 50px 0;
+  }
+
+  .publication h2 {
+    font-size: 32px;
+  }
+
+  .publication p {
+    width: 90%;
+    font-size: 15px;
+  }
+
+  /* ── Statistics ── */
+  .statistics {
+    padding: 50px 0;
+  }
+
+  .statistics h2 {
+    font-size: 32px;
+    margin-bottom: 2rem;
+  }
+
+  /* ── Contact ── */
+  .contact {
+    padding: 40px 0 100px 0;
+  }
+
+  .contact h2 {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .contact form input,
+  .contact form textarea {
+    font-size: 15px;
+    padding: 14px 18px;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    padding: 0 0 30px 0;
+    text-align: center;
+  }
+
+  .footer .fw-bold {
+    font-size: 1.2rem;
+  }
+
+  .footer .social-icon {
+    justify-content: center;
+    margin: 10px 0;
+  }
+}
+
+/* ============================================================
+   SMALL PHONES — ≤ 480px
+   ============================================================ */
+@media (max-width: 480px) {
+
+  .banner {
+    padding: 110px 0 50px 0;
+  }
+
+  .banner h1 {
+    font-size: 30px;
+  }
+
+  .banner .tagline {
+    font-size: 12px;
+    letter-spacing: 0.4px;
+  }
+
+  .banner img {
+    width: 170px !important;
+    height: 185px !important;
+  }
+
+  .skill-bx {
+    border-radius: 20px;
+    padding: 28px 14px;
+  }
+
+  .publication p {
+    width: 100%;
+  }
+
+  .project p {
+    width: 100%;
+  }
+
+  .connect-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
 }
