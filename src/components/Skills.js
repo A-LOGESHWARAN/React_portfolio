@@ -1,98 +1,90 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import TrackVisibility from "react-on-screen";
-import meter1 from "../assets/img/meter1.png";
-import meter2 from "../assets/img/meter2.png";
-import meter3 from "../assets/img/meter3.png";
-// ❌ Removed unused meter4 import
-import meter5 from "../assets/img/meter5.svg";
-import react from "../assets/img/react.png";
-import node from "../assets/img/nodejs.png";
-import flask from "../assets/img/flask.webp";
-import mongodb from "../assets/img/mongodb.png";
-import mysql from "../assets/img/sql.svg";
-import McA from "../assets/img/McA.svg";
-import DockL from "../assets/img/DockL.png";
-import AWS from "../assets/img/AWS.png";
-import git from "../assets/img/git.png";
-import pytorch from "../assets/img/pytorch.webp";
 import colorSharp from "../assets/img/color-sharp.png";
 
 export const Skills = () => {
-  const [selectedCategory, setSelectedCategory] = useState("Machine Learning");
-
-  const responsive = {
-    superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 5 },
-    desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
-    tablet: { breakpoint: { max: 1024, min: 464 }, items: 2 },
-    mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
-  };
+  const [selectedCategory, setSelectedCategory] = useState("Programming Languages");
 
   const skillCategories = {
-    "Machine Learning": [
-      { img: meter1, name: "TensorFlow" },
-      { img: meter2, name: "Scikit-learn" },
-      { img: meter3, name: "AutoKeras" },
-      { img: pytorch, name: "PyTorch" },
-      { img: meter5, name: "Hugging Face" },
+    "Programming Languages": [
+      { icon: "🐍", name: "Python" },
+      { icon: "⚙️", name: "C / C++" },
+      { icon: "🟨", name: "JavaScript" },
+      { icon: "🗄️", name: "SQL" },
     ],
-    "Full Stack": [
-      { img: react, name: "React.js" },
-      { img: node, name: "Node.js" },
-      { img: flask, name: "Flask" },
-      { img: mysql, name: "MySQL" },
-      { img: mongodb, name: "MongoDB" },
+    "AI / ML": [
+      { icon: "🤖", name: "Machine Learning" },
+      { icon: "🧠", name: "Deep Learning" },
+      { icon: "💬", name: "NLP" },
+      { icon: "🔍", name: "ODQA" },
+      { icon: "✨", name: "LLM Applications" },
     ],
-    "Cloud and Other Technologies": [
-      { img: McA, name: "Microsoft Azure" },
-      { img: DockL, name: "Docker" },
-      { img: AWS, name: "AWS" },
-      { img: git, name: "Git & GitHub" },
+    "Frameworks": [
+      { icon: "🔶", name: "TensorFlow" },
+      { icon: "🔥", name: "PyTorch" },
+      { icon: "📐", name: "Scikit-learn" },
+      { icon: "🤗", name: "Hugging Face" },
+      { icon: "🐼", name: "Pandas" },
+      { icon: "🔢", name: "NumPy" },
+    ],
+    "Web Development": [
+      { icon: "🌐", name: "HTML" },
+      { icon: "🎨", name: "CSS" },
+      { icon: "🟨", name: "JavaScript" },
+      { icon: "⚛️", name: "React.js" },
+      { icon: "🟢", name: "Node.js" },
+      { icon: "🚂", name: "Express.js" },
+    ],
+    "Databases": [
+      { icon: "🐬", name: "MySQL" },
+      { icon: "🍃", name: "MongoDB" },
+      { icon: "🐘", name: "PostgreSQL" },
+    ],
+    "Tools & Platforms": [
+      { icon: "🐙", name: "Git & GitHub" },
+      { icon: "💻", name: "VS Code" },
+      { icon: "📓", name: "Jupyter Notebook" },
+      { icon: "🐳", name: "Docker" },
+      { icon: "🐧", name: "Linux" },
+    ],
+    "Data & Visualization": [
+      { icon: "🧹", name: "Data Cleaning" },
+      { icon: "📊", name: "Data Analysis" },
+      { icon: "📈", name: "Matplotlib" },
+      { icon: "🌊", name: "Seaborn" },
+      { icon: "📉", name: "Power BI / Tableau" },
     ],
   };
 
   const categories = Object.keys(skillCategories);
   const skills = skillCategories[selectedCategory];
 
-  const wipeVariants = {
-    initial: { opacity: 0, x: 50 },
-    animate: { opacity: 1, x: 0, transition: { duration: 0.6 } },
-    exit: { opacity: 0, x: -50, transition: { duration: 0.4 } },
-  };
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+    },
+    exit: {
+      opacity: 0,
+      transition: { staggerChildren: 0.04, staggerDirection: -1 },
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.85 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      scale: 1,
+      transition: { type: "spring", stiffness: 120, damping: 14 },
     },
+    exit: { opacity: 0, y: -20, scale: 0.9, transition: { duration: 0.2 } },
   };
 
-  const skillCardVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 20 },
-    visible: (index) => ({
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        delay: index * 0.1,
-        type: "spring",
-        stiffness: 100,
-        damping: 10,
-      },
-    }),
+  const headerVariants = {
+    hidden: { opacity: 0, y: -30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   return (
@@ -100,77 +92,73 @@ export const Skills = () => {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <TrackVisibility partialVisibility>
-              {({ isVisible }) => (
-                <motion.div
-                  className="skill-bx"
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                  variants={containerVariants}
-                >
-                  <motion.h2 variants={itemVariants} style={{ fontFamily: "'Centra', sans-serif" }}>
-                    Skills
-                  </motion.h2>
-                  <motion.p variants={itemVariants} style={{ fontFamily: "'Centra', sans-serif" }}>
-                    I specialize in Full Stack Development, Machine Learning, and
-                    UI/UX Design — combining technical expertise with creative
-                    problem-solving.
-                  </motion.p>
+            <motion.div
+              className="skill-bx"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+            >
+              {/* Header */}
+              <motion.h2 variants={headerVariants} style={{ fontFamily: "'Centra', sans-serif" }}>
+                Skills
+              </motion.h2>
+              <motion.p variants={headerVariants} style={{ fontFamily: "'Centra', sans-serif" }}>
+                From AI & Machine Learning to Full Stack Web Development — here's what I bring to the table.
+              </motion.p>
 
-                  {/* 🌟 Animated Category Tabs */}
-                  <motion.div
-                    className="category-tabs"
-                    variants={containerVariants}
+              {/* Category Tabs */}
+              <motion.div className="category-tabs" variants={headerVariants}>
+                {categories.map((cat) => (
+                  <motion.button
+                    key={cat}
+                    className={`category-btn ${selectedCategory === cat ? "active" : ""}`}
+                    onClick={() => setSelectedCategory(cat)}
+                    whileHover={{ scale: 1.06, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    {categories.map((cat, index) => (
-                      <motion.button
-                        key={cat}
-                        className={`category-btn ${selectedCategory === cat ? "active" : ""
-                          }`}
-                        onClick={() => setSelectedCategory(cat)}
-                        variants={itemVariants}
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        {cat}
-                      </motion.button>
-                    ))}
-                  </motion.div>
+                    {cat}
+                  </motion.button>
+                ))}
+              </motion.div>
 
-                  {/* 🌈 Continuous Marquee Animation */}
-                  <div className="skill-marquee-container">
-                    <div className="marquee-track">
-                      {/* Duplicate skills for seamless loop (4 sets) */}
-                      {[...skills, ...skills, ...skills, ...skills].map((skill, index) => (
-                        <div className="marquee-item" key={`${skill.name}-${index}`}>
-                          <motion.div
-                            className="skill-card"
-                            whileHover={{
-                              y: -5,
-                              scale: 1.05,
-                              boxShadow: "0 10px 30px rgba(108, 99, 255, 0.4)",
-                              borderColor: "#6c63ff",
-                            }}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            <img src={skill.img} alt={skill.name} />
-                            <h5>{skill.name}</h5>
-                          </motion.div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+              {/* Skills Grid */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={selectedCategory}
+                  className="skills-grid"
+                  data-count={skills.length}
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                >
+                  {skills.map((skill) => (
+                    <motion.div
+                      key={skill.name}
+                      className="skill-card skill-card--text"
+                      variants={cardVariants}
+                      whileHover={{
+                        y: -8,
+                        scale: 1.06,
+                        boxShadow: "0 16px 40px rgba(108, 99, 255, 0.45)",
+                        borderColor: "#6c63ff",
+                      }}
+                      whileTap={{ scale: 0.97 }}
+                    >
+                      <div className="skill-card-inner">
+                        <div className="skill-emoji">{skill.icon}</div>
+                        <h5>{skill.name}</h5>
+                        <div className="skill-glow" />
+                      </div>
+                    </motion.div>
+                  ))}
                 </motion.div>
-              )}
-            </TrackVisibility>
+              </AnimatePresence>
+            </motion.div>
           </div>
         </div>
       </div>
 
-      {/* ✅ Fixed alt text to avoid redundancy warning */}
       <img
         className="background-image-left"
         src={colorSharp}
