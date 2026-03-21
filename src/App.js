@@ -11,10 +11,12 @@ import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { Resume } from "./components/Resume";
 import { Analytics } from "@vercel/analytics/react"
+import { CustomCursor } from "./components/CustomCursor";
 
 function App() {
   return (
     <div className="App">
+      <CustomCursor />
       <NavBar />
       <Banner />
       <Skills />

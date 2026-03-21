@@ -8,36 +8,42 @@ export const Projects = () => {
       description:
         "A machine learning-based web application that automates resume screening using NLP to extract key details and rank candidates efficiently.",
       github: "https://github.com/A-LOGESHWARAN/Resume_screener",
+      techStack: ["Python", "NLP", "Scikit-learn", "Flask", "NLTK"],
     },
     {
       title: "RAG Chatbot – Document-aware AI Assistant",
       description:
         "A Retrieval-Augmented Generation (RAG)-based chatbot built with FastAPI, FAISS vector search, and Sentence Transformers.",
       github: "https://github.com/A-LOGESHWARAN/BOT",
+      techStack: ["FastAPI", "FAISS", "Sentence Transformers", "Python", "LangChain"],
     },
     {
       title: "Hand-to-Virtual-Boundary Detection POC",
       description:
         "Developed a real-time Hand-to-Virtual-Boundary Detection POC using classical computer vision with OpenCV and NumPy, without external pose APIs.",
       github: "https://github.com/A-LOGESHWARAN/HandTracking_POC",
+      techStack: ["Python", "OpenCV", "NumPy"],
     },
     {
       title: "Pneumonia Detection",
       description:
         "A deep learning model that detects pneumonia from chest X-ray images for faster and accurate diagnosis.",
       github: "https://github.com/A-LOGESHWARAN/Chest_Resnet",
+      techStack: ["Python", "PyTorch", "ResNet", "Torchvision"],
     },
     {
       title: "Patient Risk Prediction",
       description:
         "Developed an end-to-end ICU Patient Deterioration Prediction System using XGBoost, SMOTE, and Optuna for 88%+ accuracy on 1M patient records.",
       github: "https://github.com/A-LOGESHWARAN/Patient_Risk_Prediction",
+      techStack: ["Python", "XGBoost", "SMOTE", "Optuna", "Pandas"],
     },
     {
       title: "Multi-Vendor E-Commerce Platform with Role-Based Dashboards",
       description:
         "Built a scalable MERN-stack e-commerce system with JWT authentication, role-based authorization, MongoDB data modeling, seller approval flows, order lifecycle management, and a chatbot-assisted buyer experience.",
       github: "https://final-ecom-six.vercel.app/",
+      techStack: ["MongoDB", "Express.js", "React", "Node.js", "JWT"],
     },
   ];
 
@@ -140,6 +146,24 @@ export const Projects = () => {
                         >
                           {project.description}
                         </div>
+
+                        {/* Tech Stack Badges */}
+                        {project.techStack && (
+                          <div
+                            style={{
+                              display: "flex",
+                              flexWrap: "wrap",
+                              gap: "8px",
+                              marginTop: "14px",
+                            }}
+                          >
+                            {project.techStack.map((tech, i) => (
+                              <span key={i} className="tech-badge">
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
 
                       <motion.a
@@ -182,6 +206,18 @@ export const Projects = () => {
         .visit-btn:hover {
           box-shadow: 0 0 20px rgba(108, 99, 255, 0.8);
           color: #fff;
+        }
+        .tech-badge {
+          display: inline-block;
+          background: rgba(108, 99, 255, 0.15);
+          color: #b8b2ff;
+          border: 1px solid rgba(108, 99, 255, 0.35);
+          border-radius: 50px;
+          padding: 3px 12px;
+          font-size: 0.75rem;
+          font-weight: 500;
+          letter-spacing: 0.3px;
+          white-space: nowrap;
         }
       `}</style>
     </section>

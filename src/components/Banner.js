@@ -54,6 +54,33 @@ export const Banner = () => {
               initial="hidden"
               animate="visible"
             >
+              <motion.div
+                variants={slideUp}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  background: "rgba(34, 197, 94, 0.1)",
+                  border: "1px solid rgba(34, 197, 94, 0.4)",
+                  borderRadius: "50px",
+                  padding: "6px 16px",
+                  marginBottom: "16px",
+                  width: "fit-content",
+                }}
+              >
+                <span className="avail-dot" />
+                <span
+                  style={{
+                    color: "#4ade80",
+                    fontSize: "0.82rem",
+                    fontWeight: "600",
+                    letterSpacing: "0.5px",
+                  }}
+                >
+                  Available for Opportunities
+                </span>
+              </motion.div>
+
               <motion.span className="tagline" variants={slideUp}>
                 ARTIFICIAL INTELLIGENCE &amp; MACHINE LEARNING
               </motion.span>
@@ -126,6 +153,22 @@ export const Banner = () => {
           </Col>
         </Row>
       </Container>
+      <style>{`
+        .avail-dot {
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background: #4ade80;
+          box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+          animation: pulse-green 1.8s ease-in-out infinite;
+          flex-shrink: 0;
+        }
+        @keyframes pulse-green {
+          0%   { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+          70%  { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+        }
+      `}</style>
     </section>
   );
 };
