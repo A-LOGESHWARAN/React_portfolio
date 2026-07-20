@@ -1583,3 +1583,627 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     justify-content: center;
   }
 }
+
+/* ============================================================
+   EXPERIENCE SECTION CSS
+   ============================================================ */
+.experience {
+  padding: 0 0 80px 0;
+  position: relative;
+}
+
+.experience-bx {
+  background: linear-gradient(145deg, #1a1a24, #232330);
+  border-radius: 64px;
+  text-align: center;
+  padding: 60px 50px;
+  margin-top: -30px;
+  border: 1px solid rgba(108, 99, 255, 0.12);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.experience-title {
+  font-size: 45px;
+  font-weight: 700;
+  font-family: 'Centra', sans-serif;
+  background: linear-gradient(90deg, #fff, #6c63ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.experience-desc {
+  color: #B8B8B8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  margin: 14px auto 36px auto;
+  max-width: 800px;
+}
+
+.experience-desc span {
+  color: #6c63ff;
+  font-weight: 600;
+}
+
+/* View Toggle Button Styles */
+.experience-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+}
+
+.toggle-btn {
+  padding: 12px 24px;
+  border: 2px solid rgba(108, 99, 255, 0.25);
+  border-radius: 30px;
+  background: rgba(108, 99, 255, 0.05);
+  color: #b0b0b0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-btn:hover {
+  background: rgba(108, 99, 255, 0.15);
+  border-color: #6c63ff;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.2);
+}
+
+.toggle-btn.active {
+  background: linear-gradient(135deg, #6c63ff, #aa367c);
+  border-color: #6c63ff;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(108, 99, 255, 0.5);
+}
+
+/* ────────────────────────────────────────────────────────────
+   FLOWCHART DESIGN STYLES
+   ──────────────────────────────────────────────────────────── */
+.flowchart-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto 3rem auto;
+  padding: 20px 0;
+}
+
+/* Desktop horizontal flow lines */
+.flowchart-svg-desktop {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Electric flowing dash line */
+.electric-path {
+  stroke-dasharray: 40, 200;
+  stroke-dashoffset: 0;
+  animation: pulse-stream 4s linear infinite;
+  filter: drop-shadow(0 0 8px #6c63ff);
+}
+
+@keyframes pulse-stream {
+  0% {
+    stroke-dashoffset: 240;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.flowchart-nodes {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.flowchart-node-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  width: 180px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.node-marker {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(26, 26, 36, 0.9);
+  border: 3px solid rgba(108, 99, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.flowchart-node-wrapper:hover .node-marker {
+  border-color: #6c63ff;
+  box-shadow: 0 0 20px rgba(108, 99, 255, 0.5);
+}
+
+.flowchart-node-wrapper.active .node-marker {
+  background: linear-gradient(135deg, #6c63ff, #00bcd4);
+  border-color: #fff;
+  box-shadow: 0 0 25px rgba(108, 99, 255, 0.7);
+}
+
+.flowchart-node-wrapper.completed .node-marker {
+  border-color: #00bcd4;
+}
+
+.node-icon {
+  font-size: 1.6rem;
+  z-index: 3;
+}
+
+/* Pulsing rings for the active node */
+.node-ripple {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #6c63ff;
+  animation: ripple-glow 2s infinite ease-out;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes ripple-glow {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.node-label {
+  margin-top: 15px;
+}
+
+.node-time {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #00bcd4;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.node-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.flowchart-node-wrapper.active .node-title {
+  color: #6c63ff;
+  font-weight: 700;
+}
+
+/* ────────────────────────────────────────────────────────────
+   TIMELINE DESIGN STYLES
+   ──────────────────────────────────────────────────────────── */
+.timeline-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto 3rem auto;
+  padding: 40px 0;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.timeline-progress {
+  position: absolute;
+  width: 100%;
+  background: linear-gradient(180deg, #aa367c, #6c63ff, #00bcd4);
+  top: 0;
+  left: 0;
+  transition: height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.5);
+}
+
+.timeline-item {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  margin-bottom: 50px;
+  width: 50%;
+  cursor: pointer;
+}
+
+.timeline-item.right {
+  align-self: flex-end;
+  justify-content: flex-start;
+  margin-left: 50%;
+}
+
+.timeline-dot {
+  position: absolute;
+  right: -24px;
+  top: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(26, 26, 36, 0.95);
+  border: 3px solid rgba(108, 99, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.timeline-item.right .timeline-dot {
+  left: -24px;
+  right: auto;
+}
+
+.dot-icon {
+  font-size: 1.3rem;
+}
+
+.timeline-item:hover .timeline-dot,
+.timeline-item.active .timeline-dot {
+  border-color: #6c63ff;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(108, 99, 255, 0.5);
+}
+
+.timeline-item.active .timeline-dot {
+  background: linear-gradient(135deg, #6c63ff, #00bcd4);
+}
+
+.timeline-card {
+  width: 88%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(108, 99, 255, 0.15);
+  border-radius: 20px;
+  padding: 24px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.timeline-item.left .timeline-card {
+  margin-right: 30px;
+}
+
+.timeline-item.right .timeline-card {
+  margin-left: 30px;
+}
+
+.timeline-item:hover .timeline-card {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(108, 99, 255, 0.4);
+  transform: translateY(-5px);
+}
+
+.timeline-item.active .timeline-card {
+  background: rgba(108, 99, 255, 0.08);
+  border-color: #6c63ff;
+  box-shadow: 0 10px 25px rgba(108, 99, 255, 0.15);
+}
+
+.timeline-time {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #00bcd4;
+  letter-spacing: 1px;
+}
+
+.timeline-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 10px 0 6px 0;
+  color: #fff;
+  font-family: 'Centra', sans-serif;
+}
+
+.timeline-card p {
+  color: #b0b0b0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.timeline-card-click {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6c63ff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+}
+
+/* ────────────────────────────────────────────────────────────
+   INTERACTIVE DASHBOARD STYLES
+   ──────────────────────────────────────────────────────────── */
+.phase-details-dashboard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(108, 99, 255, 0.18);
+  border-radius: 36px;
+  padding: 40px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  text-align: left;
+}
+
+.details-header-block {
+  margin-bottom: 25px;
+}
+
+.details-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(0, 188, 212, 0.12);
+  color: #00bcd4;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(0, 188, 212, 0.2);
+}
+
+.details-main-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Centra', sans-serif;
+}
+
+.details-icon {
+  font-size: 2rem;
+}
+
+.details-subtitle {
+  font-size: 1.05rem;
+  color: #a89fff;
+  margin: 6px 0 15px 0;
+  font-weight: 500;
+}
+
+.details-desc-paragraph {
+  color: #b0b0b0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.details-achievements h5 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.details-achievements ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.details-achievements li {
+  display: flex;
+  gap: 12px;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  color: #d0d0e0;
+}
+
+.achievement-tick {
+  color: #00bcd4;
+  font-weight: bold;
+}
+
+/* Dashboard Metrics & Tech Box */
+.details-stats-tech-box {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  height: 100%;
+  justify-content: center;
+  padding-left: 20px;
+}
+
+.details-stat-metric {
+  background: radial-gradient(circle at 30% 20%, rgba(108, 99, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 80%);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  border-radius: 24px;
+  padding: 30px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.metric-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #00bcd4;
+  display: block;
+  font-family: 'Centra', sans-serif;
+  text-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+}
+
+.metric-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #b0b0b0;
+  margin-top: 5px;
+  display: block;
+}
+
+.details-tech-stack h5 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tech-pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-pill {
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #c0c0d0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ────────────────────────────────────────────────────────────
+   RESPONSIVENESS AND MOBILE ADAPTATION
+   ──────────────────────────────────────────────────────────── */
+@media (max-width: 991px) {
+  .details-stats-tech-box {
+    padding-left: 0;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .experience-bx {
+    padding: 40px 20px;
+    border-radius: 36px;
+  }
+
+  .experience-title {
+    font-size: 32px;
+  }
+
+  .experience-desc {
+    font-size: 15px;
+  }
+
+  /* Vertical Flowchart Stacking for Mobile */
+  .flowchart-svg-desktop {
+    display: none;
+  }
+
+  .flowchart-nodes {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+  }
+
+  .flowchart-nodes::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    bottom: 30px;
+    left: 50%;
+    width: 2px;
+    background: rgba(108, 99, 255, 0.2);
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .flowchart-node-wrapper {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    padding-left: calc(50% - 28px);
+    position: relative;
+    z-index: 2;
+  }
+
+  .node-marker {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+  }
+
+  .node-label {
+    margin-top: 0;
+    margin-left: 15px;
+  }
+
+  /* Vertical Timeline Mobile Adjustments */
+  .timeline-line {
+    left: 20px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    align-self: flex-start;
+    justify-content: flex-start;
+    margin-left: 0 !important;
+    padding-left: 50px;
+  }
+
+  .timeline-dot {
+    left: -4px !important;
+    right: auto !important;
+    width: 40px;
+    height: 40px;
+  }
+
+  .timeline-card {
+    width: 100%;
+  }
+
+  .timeline-item.left .timeline-card,
+  .timeline-item.right .timeline-card {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Details Panel Mobile */
+  .phase-details-dashboard {
+    padding: 24px 20px;
+    border-radius: 24px;
+    margin-top: 20px;
+  }
+
+  .details-main-title {
+    font-size: 1.45rem;
+  }
+}
